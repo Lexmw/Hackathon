@@ -4,6 +4,7 @@ import Photo from "./photo";
 import "../css/custom.scss";
 
 import axios from "axios";
+import photo from "./photo";
 
 class App extends Component {
   constructor(props) {
@@ -11,12 +12,14 @@ class App extends Component {
     this.state = {
       photos: [],
       searchTerm:'',
-      picCount:'3'
+      picCount:'3',
+      quote:[]
     };
 
     this.visionBoardPics = this.visionBoardPics.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clearPhotos = this.clearPhotos.bind(this);
+    this.quote = this.quote.bind(this);
   }
 
   handleChange(event) {
@@ -38,19 +41,32 @@ class App extends Component {
             picCount:'3',
             search: 'true'
         });
-      });
+        console.log(this.state.search)
+      })
+    }
+
+  quote() {
+      axios
+        .get('http://api.icndb.com/jokes/random/')
+        .then(response => response.data)
+        .then( quote => {
+            console.log(quote.value.joke)            
+            this.setState({ 
+                quote: quote.value.joke,
+            });
+            console.log(this.state.quote);
+        })
+
   }
 
-  quote() {}
-
   clearPhotos(){
-        this.setState({photos:[]})
+        this.setState({photos:[], quote:[]})
   }
 
   render() {
     console.log(this.state.photos);
     return (
-    <div>
+    <div className='container'>
     <div className='jumbotron jumbotron-fluid'>
     <div className='container'>
     <h1 className='display-4 text-center'>🎇Inspiration for your Vision Board🎇</h1>
@@ -84,9 +100,16 @@ class App extends Component {
           </div>
          
           <br/>
-      
-           <button className='btn btn-success' onClick={this.visionBoardPics}>Search Now</button>
-           <button className='btn btn-danger' onClick={this.clearPhotos}>New Search</button>
+        
+        <button className='btn btn-success' onClick={() => {this.visionBoardPics(),this.quote()}} >Search Now </button>
+        
+        <button className='btn btn-danger' onClick={this.clearPhotos}>New Search</button>
+        <br/>
+
+       <div id='QUOTE'><h3>
+       {this.state.quote}
+       </h3></div>
+           
        
         
           <div className='row container'>
