@@ -1,13 +1,13 @@
-  {
-    "version": 2,
-    "name":"app",
-        "builds": [
-          { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
-        ],
-  "routes": [
-    { "src": "/", "dest": "/public/index.html" },
-    { "src": "/bundle.js", "dest": "/dist/bundle.js" },
-    { "src": "/css/style.css", "dest": "/dist/css/style.css" },
-    { "src": "/(.*)", "dest": "/server/index.js" }
-  ],
-}
+//   {
+//     "version": 2,
+//     "name":"app",
+//         "builds": [
+//           { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
+//         ],
+//   "routes": [
+//     { "src": "/", "dest": "/public/index.html" },
+//     { "src": "/bundle.js", "dest": "/dist/bundle.js" },
+//     { "src": "/css/style.css", "dest": "/dist/css/style.css" },
+//     { "src": "/(.*)", "dest": "/server/index.js" }
+//   ],
+// }
