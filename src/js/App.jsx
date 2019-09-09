@@ -4,7 +4,6 @@ import Photo from "./photo";
 import "../css/custom.scss";
 
 import axios from "axios";
-import photo from "./photo";
 
 class App extends Component {
   constructor(props) {
@@ -101,9 +100,9 @@ class App extends Component {
          
           <br/>
         
-        <button className='btn btn-success' onClick={() => {this.visionBoardPics(),this.quote()}} >Search Now </button>
+        <button id='search' className='btn btn-success' onClick={() => {this.visionBoardPics(),this.quote()}} >Search Now </button>
         
-        <button className='btn btn-danger' onClick={this.clearPhotos}>New Search</button>
+        <button id='clear' className='btn btn-danger' onClick={this.clearPhotos}>New Search</button>
         <br/>
 
        <div id='QUOTE'><h3>
