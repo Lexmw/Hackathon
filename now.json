@@ -2,8 +2,7 @@
     "version": 2,
     "name":"app",
         "builds": [
-          { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } },
-          {"src": ""}
+          { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
         ],
   "routes": [
     { "src": "/", "dest": "/public/index.html" },
